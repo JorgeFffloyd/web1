@@ -11,7 +11,6 @@ unset($_SESSION['success']);
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Задание 3 - Анкета разработчика</title>
     <link rel="stylesheet" href="style.css">
     <style>
@@ -40,6 +39,9 @@ unset($_SESSION['success']);
         .error-list li {
             margin: 5px 0;
         }
+        input:invalid {
+            border-color: #e74c3c;
+        }
     </style>
 </head>
 <body>
@@ -67,51 +69,61 @@ unset($_SESSION['success']);
         <?php endif; ?>
 
         <form action="save.php" method="POST" id="application-form">
+            <!-- ФИО -->
             <div class="form-group">
                 <label for="full_name">ФИО <span class="required">*</span></label>
                 <input type="text" id="full_name" name="full_name" required 
+                       pattern="[A-Za-zА-Яа-яЁё\s\-]{2,150}"
+                       title="Только буквы, пробелы и дефисы. От 2 до 150 символов."
                        placeholder="Иванов Иван Иванович"
                        value="<?php echo isset($old_data['full_name']) ? htmlspecialchars($old_data['full_name']) : ''; ?>">
+                <small>Только буквы, пробелы и дефисы (2-150 символов)</small>
             </div>
 
+            <!-- Телефон -->
             <div class="form-group">
                 <label for="phone">Телефон <span class="required">*</span></label>
                 <input type="tel" id="phone" name="phone" required 
+                       pattern="[\+0-9\(\)\-\s]{10,20}"
+                       title="Введите номер телефона (10-20 символов)"
                        placeholder="+7 (123) 456-78-90"
                        value="<?php echo isset($old_data['phone']) ? htmlspecialchars($old_data['phone']) : ''; ?>">
+                <small>Формат: +7 (123) 456-78-90 или 89123456789</small>
             </div>
 
+            <!-- Email -->
             <div class="form-group">
                 <label for="email">E-mail <span class="required">*</span></label>
                 <input type="email" id="email" name="email" required 
                        placeholder="ivanov@example.com"
                        value="<?php echo isset($old_data['email']) ? htmlspecialchars($old_data['email']) : ''; ?>">
+                <small>Введите корректный email адрес</small>
             </div>
 
+            <!-- Дата рождения -->
             <div class="form-group">
                 <label for="birth_date">Дата рождения <span class="required">*</span></label>
                 <input type="date" id="birth_date" name="birth_date" required
+                       min="1900-01-01" max="2025-12-31"
                        value="<?php echo isset($old_data['birth_date']) ? htmlspecialchars($old_data['birth_date']) : ''; ?>">
             </div>
 
+            <!-- Пол (только мужской и женский) -->
             <div class="form-group">
                 <label>Пол <span class="required">*</span></label>
                 <div class="radio-group">
                     <label>
-                        <input type="radio" name="gender" value="male" 
+                        <input type="radio" name="gender" value="male" required
                             <?php echo (isset($old_data['gender']) && $old_data['gender'] == 'male') ? 'checked' : ''; ?>> Мужской
                     </label>
                     <label>
-                        <input type="radio" name="gender" value="female" 
+                        <input type="radio" name="gender" value="female" required
                             <?php echo (isset($old_data['gender']) && $old_data['gender'] == 'female') ? 'checked' : ''; ?>> Женский
-                    </label>
-                    <label>
-                        <input type="radio" name="gender" value="other" 
-                            <?php echo (isset($old_data['gender']) && $old_data['gender'] == 'other') ? 'checked' : ''; ?>> Другой
                     </label>
                 </div>
             </div>
 
+            <!-- Любимые языки программирования -->
             <div class="form-group">
                 <label for="languages">Любимые языки программирования <span class="required">*</span></label>
                 <select name="languages[]" id="languages" multiple required>
@@ -128,14 +140,17 @@ unset($_SESSION['success']);
                     <option value="Scala" <?php echo (isset($old_data['languages']) && in_array('Scala', $old_data['languages'])) ? 'selected' : ''; ?>>Scala</option>
                     <option value="Go" <?php echo (isset($old_data['languages']) && in_array('Go', $old_data['languages'])) ? 'selected' : ''; ?>>Go</option>
                 </select>
-                <small style="color: #666;">Удерживайте Ctrl (Cmd) для выбора нескольких языков</small>
+                <small>Удерживайте Ctrl (Cmd) для выбора нескольких языков</small>
             </div>
 
+            <!-- Биография -->
             <div class="form-group">
                 <label for="biography">Биография</label>
-                <textarea name="biography" id="biography" placeholder="Расскажите немного о себе..."><?php echo isset($old_data['biography']) ? htmlspecialchars($old_data['biography']) : ''; ?></textarea>
+                <textarea name="biography" id="biography" maxlength="5000" placeholder="Расскажите немного о себе..."><?php echo isset($old_data['biography']) ? htmlspecialchars($old_data['biography']) : ''; ?></textarea>
+                <small>Не более 5000 символов</small>
             </div>
 
+            <!-- Согласие с контрактом -->
             <div class="form-group">
                 <div class="checkbox-group">
                     <input type="checkbox" name="agree_to_contract" id="agree_to_contract" value="1" required

@@ -60,7 +60,7 @@
                     <p>На локальном компьютере в репозиторий добавлены файлы задания 3 (index.php, save.php, style.css, report.php, view.php) и выполнена отправка на GitHub.</p>
                 </div>
                 <div class="screenshot">
-                    <img src="0.PNG" alt="Git init и push">
+                    <img src="24.PNG" alt="Git init и push">
                     <p class="caption">Скриншот 0: Инициализация Git и push</p>
                 </div>
             </div>
@@ -71,7 +71,7 @@
                     <p>Через PuTTY выполнен вход на сервер kubsu-dev.ru (порт 58528) под логином u82609.</p>
                 </div>
                 <div class="screenshot">
-                    <img src="1.PNG" alt="SSH подключение">
+                    <img src="25.PNG" alt="SSH подключение">
                     <p class="caption">Скриншот 1: Подключение к серверу по SSH</p>
                 </div>
             </div>
@@ -82,7 +82,7 @@
                     <p>В домашней директории создан каталог ~/www/task3, в который будут помещены файлы лабораторной работы (через симлинк на ~/web1/task3).</p>
                 </div>
                 <div class="screenshot">
-                    <img src="2.PNG" alt="mkdir task3">
+                    <img src="26.PNG" alt="mkdir task3">
                     <p class="caption">Скриншот 2: Создание каталога task3</p>
                 </div>
             </div>
@@ -93,7 +93,7 @@
                     <p>Запущен клиент MySQL для создания таблиц. Использована команда mysql -u u82609 -p.</p>
                 </div>
                 <div class="screenshot">
-                    <img src="4.PNG" alt="MySQL подключение">
+                    <img src="21.PNG" alt="MySQL подключение">
                     <p class="caption">Скриншот 4: Вход в MySQL</p>
                 </div>
             </div>
@@ -104,7 +104,7 @@
                     <p>Созданы три таблицы: applications, programming_languages, application_languages в соответствии с 3-й нормальной формой. Затем таблица programming_languages заполнена списком языков из задания.</p>
                 </div>
                 <div class="screenshot">
-                    <img src="5.PNG" alt="SQL запросы">
+                    <img src="22.PNG" alt="SQL запросы">
                     <p class="caption">Скриншот 5: Создание таблиц и вставка языков</p>
                 </div>
             </div>
@@ -115,7 +115,7 @@
                     <p>После завершения работы с базой данных выполнен выход из клиента MySQL.</p>
                 </div>
                 <div class="screenshot">
-                    <img src="6.PNG" alt="exit">
+                    <img src="23.PNG" alt="exit">
                     <p class="caption">Скриншот 6: Выход из MySQL</p>
                 </div>
             </div>
@@ -126,7 +126,7 @@
                     <p>Выполнена выборка записей из таблицы applications для проверки успешного сохранения данных. Для удобного просмотра всех сохранённых анкет создана отдельная страница: <a href="view.php" target="_blank">Просмотр сохранённых записей</a>.</p>
                 </div>
                 <div class="screenshot">
-                    <img src="7.PNG" alt="SELECT запрос">
+                    <img src="27.PNG" alt="SELECT запрос">
                     <p class="caption">Скриншот 7: Просмотр сохранённых записей</p>
                 </div>
             </div>

@@ -2,7 +2,7 @@
 $host = 'localhost';
 $dbname = 'u82609';
 $username = 'u82609';
-$password = 'ЗАМЕНИТЕ_НА_ВАШ_ПАРОЛЬ';
+$password = '7050514';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
@@ -63,6 +63,12 @@ $applications = $stmt->fetchAll(PDO::FETCH_ASSOC);
         .back-button a:hover {
             background-color: #5a67d8;
         }
+        .gender-male {
+            color: #2c3e50;
+        }
+        .gender-female {
+            color: #e91e63;
+        }
     </style>
 </head>
 <body>
@@ -93,7 +99,9 @@ $applications = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <td><?= htmlspecialchars($app['phone']) ?></td>
                             <td><?= htmlspecialchars($app['email']) ?></td>
                             <td><?= $app['birth_date'] ?></td>
-                            <td><?= $app['gender'] ?></td>
+                            <td class="gender-<?= $app['gender'] ?>">
+                                <?= $app['gender'] == 'male' ? 'Мужской' : 'Женский' ?>
+                            </td>
                             <td><?= htmlspecialchars($app['languages'] ?? '-') ?></td>
                             <td><?= nl2br(htmlspecialchars(substr($app['biography'] ?? '', 0, 200))) ?><?= strlen($app['biography'] ?? '') > 200 ? '...' : '' ?></td>
                             <td><?= $app['agree_to_contract'] ? 'Да' : 'Нет' ?></td>
