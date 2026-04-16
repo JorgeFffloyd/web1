@@ -15,7 +15,7 @@
         <section class="task">
             <h2>Пункт 1. Подключение к серверу через PuTTY (SSH)</h2>
             <div class="description">
-                <p><strong>Что делалось:</strong> Настроено подключение к серверу <code>kubsu-dev.ru</code> через PuTTY с нестандартным портом <strong>58528</strong> по протоколу SSH.</p>
+                <p><strong>Что делалось:</strong> Настроено подключение к серверу <code>kubsu-dev.ru</code> через PuTTY с портом <strong>58528</strong> по протоколу SSH.</p>
                 <ul>
                     <li><strong>Хост:</strong> <code>kubsu-dev.ru</code></li>
                     <li><strong>Порт:</strong> <code>58528</code></li>
@@ -24,12 +24,8 @@
                 <p>После успешной авторизации открылась командная строка сервера.</p>
             </div>
             <div class="screenshot">
-                <img src="(1).png" alt="PuTTY настройки подключения">
-                <p class="caption">Скриншот 1.1: Настройка PuTTY для подключения к kubsu-dev.ru:58528</p>
-            </div>
-            <div class="screenshot">
-                <img src="(2).png" alt="Успешный вход в систему">
-                <p class="caption">Скриншот 1.2: Успешный вход в систему (терминал после авторизации)</p>
+                <img src="(1).png" alt="Результат ping kubsu.ru и терминал">
+                <p class="caption">Скриншот 1: Терминал после успешного входа и команда ping</p>
             </div>
         </section>
 
@@ -38,10 +34,10 @@
             <h2>Пункт 2. Определение IP-адреса kubsu.ru через ping</h2>
             <div class="description">
                 <p><strong>Команда:</strong> <code>ping -c 4 kubsu.ru</code></p>
-                <p><strong>Результат:</strong> IP-адрес веб-сервера <strong>185.13.84.92</strong>. Потеря пакетов: 0%, среднее время ответа ~1 мс.</p>
+                <p><strong>Результат:</strong> IP-адрес веб-сервера <strong>185.13.84.92</strong>. Потеря пакетов: 0%.</p>
             </div>
             <div class="screenshot">
-                <img src="(3).png" alt="Результат ping kubsu.ru">
+                <img src="(2).png" alt="Результат ping kubsu.ru">
                 <p class="caption">Скриншот 2: ping kubsu.ru</p>
             </div>
         </section>
@@ -54,7 +50,7 @@
                 <p><strong>Результат:</strong> <code>kubsu.ru → 185.13.84.92</code></p>
             </div>
             <div class="screenshot">
-                <img src="(4).png" alt="nslookup A kubsu.ru">
+                <img src="(3).png" alt="nslookup A kubsu.ru">
                 <p class="caption">Скриншот 3.1: A-запись kubsu.ru</p>
             </div>
         </section>
@@ -71,7 +67,7 @@
                 </ul>
             </div>
             <div class="screenshot">
-                <img src="(5).png" alt="nslookup MX kubsu.ru">
+                <img src="(4).png" alt="nslookup MX kubsu.ru">
                 <p class="caption">Скриншот 3.2: MX-запись kubsu.ru</p>
             </div>
         </section>
@@ -83,7 +79,7 @@
                 <p><strong>Результат:</strong> <code>kubsu-dev.ru → 212.192.134.135</code></p>
             </div>
             <div class="screenshot">
-                <img src="(6).png" alt="nslookup A kubsu-dev.ru">
+                <img src="(5).png" alt="nslookup A kubsu-dev.ru">
                 <p class="caption">Скриншот 3.3: A-запись kubsu-dev.ru</p>
             </div>
         </section>
@@ -95,7 +91,7 @@
                 <p><strong>Результат:</strong> MX-записи отсутствуют (домен не настроен для приёма почты).</p>
             </div>
             <div class="screenshot">
-                <img src="(7).png" alt="nslookup MX kubsu-dev.ru">
+                <img src="(6).png" alt="nslookup MX kubsu-dev.ru">
                 <p class="caption">Скриншот 3.4: MX-запись kubsu-dev.ru (нет записей)</p>
             </div>
         </section>
@@ -106,10 +102,9 @@
             <div class="description">
                 <p><strong>Команда:</strong> <code>whois kubsu.ru</code></p>
                 <p><strong>Дата регистрации:</strong> <strong>1998-03-28</strong> (28 марта 1998 года)</p>
-                <p>Домен оплачен до 30 апреля 2026 года.</p>
             </div>
             <div class="screenshot">
-                <img src="(8).png" alt="whois kubsu.ru">
+                <img src="(7).png" alt="whois kubsu.ru">
                 <p class="caption">Скриншот 4.1: whois kubsu.ru</p>
             </div>
         </section>
@@ -119,10 +114,9 @@
             <div class="description">
                 <p><strong>Команда:</strong> <code>whois kubsu-dev.ru</code></p>
                 <p><strong>Дата регистрации:</strong> <strong>2020-02-12</strong> (12 февраля 2020 года)</p>
-                <p>Домен оплачен до 12 февраля 2027 года.</p>
             </div>
             <div class="screenshot">
-                <img src="(9).png" alt="whois kubsu-dev.ru">
+                <img src="(8).png" alt="whois kubsu-dev.ru">
                 <p class="caption">Скриншот 4.2: whois kubsu-dev.ru</p>
             </div>
         </section>
@@ -131,55 +125,61 @@
         <section class="task">
             <h2>Пункт 5.1. Локальный репозиторий и файлы</h2>
             <div class="description">
-                <p>На локальном компьютере создана папка <code>web_hw1</code>, содержащая:</p>
+                <p>На локальном компьютере создана папка <code>Web1</code>, содержащая:</p>
                 <ul>
                     <li><code>index.html</code> — отчёт</li>
                     <li><code>style.css</code> — стили</li>
-                    <li>Все скриншоты <code>(1).png ... (21).png</code></li>
+                    <li>Все скриншоты</li>
                 </ul>
             </div>
             <div class="screenshot">
-                <img src="(10).png" alt="Локальные файлы проекта">
+                <img src="(10).PNG" alt="Локальные файлы проекта">
                 <p class="caption">Скриншот 5.1: Содержимое локального репозитория</p>
             </div>
         </section>
 
         <section class="task">
-            <h2>Пункт 5.2. GitHub репозиторий</h2>
+            <h2>Пункт 5.2. Инициализация Git и настройка пользователя</h2>
             <div class="description">
-                <p>Репозиторий создан на GitHub и загружен через <code>git push</code>.</p>
-                <p><strong>Ссылка на репозиторий:</strong> <a href="https://github.com/Rusificator/web-hwl" target="_blank">github.com/Rusificator/web-hwl</a></p>
+                <p>Выполнены команды <code>git config --global user.email</code> и <code>git config --global user.name</code>, затем <code>git init</code>, <code>git add .</code>, <code>git commit</code>.</p>
             </div>
             <div class="screenshot">
-                <img src="(12).png" alt="GitHub репозиторий">
-                <p class="caption">Скриншот 5.2: Репозиторий на GitHub</p>
+                <img src="(14).PNG" alt="Инициализация Git и первый коммит">
+                <p class="caption">Скриншот 5.2: Инициализация Git, добавление файлов и коммит</p>
             </div>
         </section>
 
         <section class="task">
-            <h2>Пункт 5.3. Клонирование на учебный сервер</h2>
+            <h2>Пункт 5.3. Ошибка при первом push (Permission denied)</h2>
             <div class="description">
-                <p>На сервере выполнен <code>git clone</code> репозитория. Настроен SSH-ключ для доступа к GitHub.</p>
+                <p>При попытке выполнить <code>git push -u origin main</code> возникла ошибка <strong>Permission denied (publickey)</strong>, так как SSH-ключ не был добавлен в GitHub.</p>
             </div>
             <div class="screenshot">
-                <img src="(13).png" alt="git clone на сервере">
-                <p class="caption">Скриншот 5.3: Клонирование репозитория на kubsu-dev.ru</p>
+                <img src="(14).PNG" alt="Ошибка Permission denied">
+                <p class="caption">Скриншот 5.3: Ошибка доступа при push — требуется SSH-ключ</p>
             </div>
         </section>
 
         <section class="task">
-            <h2>Пункт 5.4. Перенос в каталог www и публикация</h2>
+            <h2>Пункт 5.4. Генерация SSH-ключа и добавление на GitHub</h2>
             <div class="description">
-                <p>Файлы скопированы в <code>~/www/hw1/</code>.</p>
-                <p><strong>Итоговый URL:</strong> <a href="http://u82609.kubsu-dev.ru/hw1/" target="_blank">http://u82609.kubsu-dev.ru/hw1/</a></p>
+                <p>Сгенерирован SSH-ключ командой <code>ssh-keygen</code>, публичный ключ добавлен в настройках GitHub (Settings → SSH and GPG keys).</p>
             </div>
             <div class="screenshot">
-                <img src="(18).png" alt="Копирование в www">
-                <p class="caption">Скриншот 5.4: Копирование файлов в каталог www</p>
+                <img src="(12).PNG" alt="SSH ключ добавлен на GitHub">
+                <p class="caption">Скриншот 5.4: SSH-ключ добавлен в аккаунт GitHub</p>
+            </div>
+        </section>
+
+        <section class="task">
+            <h2>Пункт 5.5. Успешный push на GitHub</h2>
+            <div class="description">
+                <p>После добавления SSH-ключа команда <code>git push</code> выполнилась успешно. Все файлы загружены в репозиторий <strong>JorgeFffloyd/web1</strong>.</p>
+                <p><strong>Ссылка на репозиторий:</strong> <a href="https://github.com/JorgeFffloyd/web1" target="_blank">github.com/JorgeFffloyd/web1</a></p>
             </div>
             <div class="screenshot">
-                <img src="(19).png" alt="Страница открывается в браузере">
-                <p class="caption">Скриншот 5.5: Проверка — страница доступна по HTTP</p>
+                <img src="(13).PNG" alt="Успешный push">
+                <p class="caption">Скриншот 5.5: Успешный push — все файлы загружены на GitHub</p>
             </div>
         </section>
 
@@ -187,20 +187,25 @@
         <section class="task">
             <h2>Пункт 6. Копирование файлов через SFTP (FileZilla)</h2>
             <div class="description">
-                <p>С помощью FileZilla (протокол SFTP, порт 58528) файлы были скачаны с сервера обратно на локальный компьютер.</p>
+                <p>С помощью FileZilla (протокол SFTP, порт 58528) файлы были загружены на сервер в каталог <code>/home/u82609/www/lab1/</code>.</p>
                 <ul>
                     <li><strong>Сервер:</strong> <code>kubsu-dev.ru:58528</code></li>
                     <li><strong>Логин:</strong> <code>u82609</code></li>
-                    <li><strong>Удалённый каталог:</strong> <code>/home/u82609/www/hw1/</code></li>
+                    <li><strong>Удалённый каталог:</strong> <code>/home/u82609/www/lab1/</code></li>
                 </ul>
             </div>
             <div class="screenshot">
-                <img src="(20).png" alt="FileZilla подключение и скачивание">
-                <p class="caption">Скриншот 6.1: FileZilla — процесс скачивания файлов</p>
+                <img src="(11).PNG" alt="FileZilla успешная передача">
+                <p class="caption">Скриншот 6.1: FileZilla — файлы успешно переданы на сервер</p>
             </div>
-            <div class="screenshot">
-                <img src="(21).png" alt="FileZilla завершение передачи">
-                <p class="caption">Скриншот 6.2: FileZilla — передача завершена, файлы на локальном компьютере</p>
+        </section>
+
+        <!-- ==================== ИТОГОВАЯ ССЫЛКА ==================== -->
+        <section class="task">
+            <h2>Результат работы</h2>
+            <div class="description">
+                <p><strong>Страница на сервере:</strong> <a href="http://u82609.kubsu-dev.ru/lab1/" target="_blank">http://u82609.kubsu-dev.ru/lab1/</a></p>
+                <p><strong>GitHub репозиторий:</strong> <a href="https://github.com/JorgeFffloyd/web1" target="_blank">https://github.com/JorgeFffloyd/web1</a></p>
             </div>
         </section>
     </div>
