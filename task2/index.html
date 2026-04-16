@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание 2 - HTTP запросы</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #eef2f5;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #1e5a7d;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #2c7da0;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #cbd5e1;
+            padding-bottom: 15px;
+        }
+        .task {
+            background: #f9fcfd;
+            margin: 25px 0;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 5px solid #2c7da0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .task h2 {
+            margin-top: 0;
+            color: #1e5a7d;
+            font-size: 1.3em;
+        }
+        .task p {
+            margin: 10px 0;
+            color: #333;
+        }
+        .task code {
+            background: #eef2f5;
+            padding: 2px 6px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        .screenshot {
+            margin: 20px 0 10px;
+            text-align: center;
+        }
+        .screenshot img {
+            max-width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .caption {
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 8px;
+            font-style: italic;
+        }
+        hr {
+            margin: 30px 0;
+            border: none;
+            border-top: 1px solid #cbd5e1;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>📡 Задание 2: HTTP-запросы к веб-серверу</h1>
+    <div class="subtitle">
+        Студент: u82609 | Сервер: kubsu-dev.ru | Протокол: Raw (PuTTY/telnet)
+    </div>
+
+    <!-- ===== ПУНКТ 1 ===== -->
+    <div class="task">
+        <h2>1️⃣ GET /task2/files/ HTTP/1.0 — главная страница</h2>
+        <p><strong>Запрос:</strong> <code>GET /task2/files/ HTTP/1.0</code> с заголовком <code>Host: u82609.kubsu-dev.ru</code></p>
+        <div class="screenshot">
+            <img src="4.PNG" alt="GET / HTTP/1.0">
+            <div class="caption">Скриншот 1: GET /task2/files/ HTTP/1.0 (ответ 200 OK)</div>
+        </div>
+    </div>
+
+    <!-- ===== ПУНКТ 2 ===== -->
+    <div class="task">
+        <h2>2️⃣ GET /task2/files/internal.html HTTP/1.1 — внутренняя страница</h2>
+        <p><strong>Запрос:</strong> <code>GET /task2/files/internal.html HTTP/1.1</code></p>
+        <div class="screenshot">
+            <img src="5.PNG" alt="GET internal.html">
+            <div class="caption">Скриншот 2: GET internal.html (ответ 200 OK, HTML-страница)</div>
+    </div>
+
+    <!-- ===== ПУНКТ 3 ===== -->
+    <div class="task">
+        <h2>3️⃣ HEAD /task2/files/file.tar.gz — размер файла</h2>
+        <p><strong>Запрос:</strong> <code>HEAD /task2/files/file.tar.gz HTTP/1.1</code></p>
+        <p><strong>Результат:</strong> <code>Content-Length: 10240</code> байт (10 КБ)</p>
+        <div class="screenshot">
+            <img src="8.PNG" alt="HEAD file.tar.gz">
+            <div class="caption">Скриншот 3: HEAD запрос — получен размер файла 10240 байт</div>
+        </div>
+    </div>
+
+    <!-- ===== ПУНКТ 4 ===== -->
+    <div class="task">
+        <h2>4️⃣ HEAD /task2/files/image.png — медиатип ресурса</h2>
+        <p><strong>Запрос:</strong> <code>HEAD /task2/files/image.png HTTP/1.1</code></p>
+        <p><strong>Результат:</strong> <code>Content-Type: image/png</code></p>
+        <div class="screenshot">
+            <img src="9.PNG" alt="HEAD image.png">
+            <div class="caption">Скриншот 4: HEAD запрос — медиатип image/png</div>
+        </div>
+    </div>
+
+    <!-- ===== ПУНКТ 5 ===== -->
+    <div class="task">
+        <h2>5️⃣ POST /task2/files/index.php — отправка комментария</h2>
+        <p><strong>Запрос:</strong> POST с телом <code>comment=HelloWorld</code></p>
+        <p><strong>Результат:</strong> Сервер принял комментарий и вернул ответ <code>Hello from index.php! POST received: Array ( ['comment'] => HelloWorld )</code></p>
+        <div class="screenshot">
+            <img src="10.PNG" alt="POST index.php">
+            <div class="caption">Скриншот 5: POST запрос — комментарий успешно отправлен</div>
+        </div>
+    </div>
+
+    <!-- ===== ПУНКТ 6 ===== -->
+    <div class="task">
+        <h2>6️⃣ GET /task2/files/file.tar.gz (Range: bytes=0-99) — первые 100 байт</h2>
+        <p><strong>Запрос:</strong> <code>GET /task2/files/file.tar.gz HTTP/1.1</code> с заголовком <code>Range: bytes=0-99</code></p>
+        <p><strong>Результат:</strong> <code>Content-Range: bytes 0-99/10240</code> и 100 байт данных</p>
+        <div class="screenshot">
+            <img src="11.PNG" alt="GET Range первые 100 байт">
+            <div class="caption">Скриншот 6: GET с Range — получены первые 100 байт файла</div>
+        </div>
+    </div>
+
+    <!-- ===== ПУНКТ 7 ===== -->
+    <div class="task">
+        <h2>7️⃣ GET /task2/files/index.php — кодировка ресурса</h2>
+        <p><strong>Запрос:</strong> <code>GET /task2/files/index.php HTTP/1.1</code></p>
+        <p><strong>Результат:</strong> <code>Content-Type: text/html; charset=utf-8</code></p>
+        <div class="screenshot">
+            <img src="12.PNG" alt="GET index.php кодировка">
+            <div class="caption">Скриншот 7: GET запрос — кодировка UTF-8</div>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- ===== ДОПОЛНИТЕЛЬНЫЕ СКРИНШОТЫ ДЛЯ ОТЧЁТА ===== -->
+    <h2 style="text-align: center;">📎 Дополнительные материалы</h2>
+
+    <div class="task">
+        <h2>🔧 Настройка PuTTY для Raw-соединения (порт 80)</h2>
+        <div class="screenshot">
+            <img src="putty.PNG" alt="Настройки PuTTY">
+            <div class="caption">Настройки PuTTY: Host = kubsu-dev.ru, Port = 80, Connection type = Raw</div>
+        </div>
+    </div>
+
+    <div class="task">
+        <h2>📁 Создание файлов на сервере и заливка через Git</h2>
+        <div class="screenshot">
+            <img src="7.PNG" alt="Создание файлов на сервере">
+            <div class="caption">Создание папок и файлов на сервере через SSH</div>
+        </div>
+        <div class="screenshot">
+            <img src="2.PNG" alt="Git push">
+            <div class="caption">Git push файлов задания 2 в репозиторий</div>
+        </div>
+        <div class="screenshot">
+            <img src="6.PNG" alt="FileZilla">
+            <div class="caption">FileZilla — заливка файлов на сервер через SFTP</div>
+        </div>
+        <div class="screenshot">
+            <img src="1.PNG" alt="Структура репозитория">
+            <div class="caption">Локальный репозиторий: файлы и скриншоты</div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div style="text-align: center; color: #2c7da0; margin-top: 30px;">
+        <p> Все 7 HTTP-запросов выполнены успешно через PuTTY (Raw, порт 80)</p>
+        <p> Файлы задания 2 залиты в Git и на сервер в каталог <code>/task2/files/</code></p>
+        <p> Страница доступна по адресу: <a href="http://u82609.kubsu-dev.ru/task2/" target="_blank">http://u82609.kubsu-dev.ru/task2/</a></p>
+        <p> Репозиторий: <a href="https://github.com/JorgeFffloyd/web1" target="_blank">github.com/JorgeFffloyd/web1</a></p>
+    </div>
+</div>
+</body>
+</html>
