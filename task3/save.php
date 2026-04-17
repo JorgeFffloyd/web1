@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
     
-    // 5. Валидация пола (только male или female)
+    // 5. Валидация пола 
     $gender = $_POST['gender'] ?? '';
     $allowed_genders = ['male', 'female'];
     if (empty($gender)) {
