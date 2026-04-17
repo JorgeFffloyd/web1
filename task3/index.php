@@ -108,7 +108,7 @@ unset($_SESSION['success']);
                        value="<?php echo isset($old_data['birth_date']) ? htmlspecialchars($old_data['birth_date']) : ''; ?>">
             </div>
 
-            <!-- Пол (только мужской и женский) -->
+            <!-- Пол  -->
             <div class="form-group">
                 <label>Пол <span class="required">*</span></label>
                 <div class="radio-group">
